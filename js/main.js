@@ -1,22 +1,14 @@
 const isPalindrome = (str) => {
   const reverseString = str.replaceAll(' ', '').split('').reverse().join('');
-  return str.toLowerCase() === reverseString.toLowerCase();
+  return str.replaceAll(' ', '').toLowerCase() === reverseString.toLowerCase();
 };
 
 const getIntNumber = (str) => {
-  let arr;
-  if (typeof str === 'number') {
-    arr = String(str).split('');
-  } else {
-    arr = str.split('');
-  }
-  let arrOfNum = [];
-  for (let i of arr) {
-    if (isNaN(+i) === false && i !== ' ') {
-      arrOfNum.push(i);
-    }
-  }
-  return arrOfNum.length > 0 ? parseInt(arrOfNum.join(''), 10) : NaN;
+  const arr = String(str)
+    .replaceAll(' ', '')
+    .split('')
+    .filter((i) => Number.isInteger(+i));
+  return arr.length > 0 ? parseInt(arr.join(''), 10) : NaN;
 };
 
 const padStart = (originalString, minLength, padString) => {
@@ -32,18 +24,13 @@ const padStart = (originalString, minLength, padString) => {
 const isRightLength = (string, rightLength) => string.length <= rightLength;
 
 const getRandomNumberFromRange = (minRange, maxRange, numOfSigns) => {
-  if (typeof minRange !== 'number' || typeof maxRange !== 'number' || typeof numOfSigns !== 'number') {
+  const isArgumentNotValid = typeof minRange !== 'number' || typeof maxRange !== 'number' || typeof numOfSigns !== 'number';
+  if (isArgumentNotValid) {
     return NaN;
   }
 
-  let min, max;
-  if (minRange > maxRange) {
-    min = Math.ceil(maxRange);
-    max = Math.floor(minRange);
-  } else {
-    min = Math.ceil(minRange);
-    max = Math.floor(maxRange);
-  }
+  const min = Math.min(minRange, maxRange);
+  const max = Math.max(minRange, maxRange);
 
   return (Math.random() * (max - min) + min).toFixed(numOfSigns);
 };
