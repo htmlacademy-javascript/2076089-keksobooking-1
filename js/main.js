@@ -1,6 +1,6 @@
 const isPalindrome = (str) => {
-  const reverseString = str.replaceAll(' ', '').split('').reverse().join('');
-  return str.replaceAll(' ', '').toLowerCase() === reverseString.toLowerCase();
+  const lowerString = str.replaceAll(' ', '').toLowerCase();
+  return lowerString === lowerString.split('').reverse().join('');
 };
 
 const getIntNumber = (str) => {
@@ -26,7 +26,7 @@ const isRightLength = (string, rightLength) => string.length <= rightLength;
 const getRandomNumberFromRange = (minRange, maxRange, numOfSigns) => {
   const isArgumentNotValid = typeof minRange !== 'number' || typeof maxRange !== 'number' || typeof numOfSigns !== 'number';
   if (isArgumentNotValid) {
-    return NaN;
+    throw new TypeError('Error: Argument type must be a number');
   }
 
   const min = Math.min(minRange, maxRange);
