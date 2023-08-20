@@ -1,4 +1,3 @@
-import { FEAUTURES_LIST, PHOTOS_URL_LIST, LAT, LNG } from './data.js';
 
 const getRandomNumber = (minRange, maxRange, numOfSigns = 0) => {
   const isArgumentNotValid = typeof minRange !== 'number' || typeof maxRange !== 'number' || typeof numOfSigns !== 'number';
@@ -39,25 +38,11 @@ const getAvatarUrl = () => {
   return `img/avatars/user${number}.png`;
 };
 
-const getFeauturesList = () => {
-  const min = getRandomNumber(0, FEAUTURES_LIST.length - 1);
-  const max = getRandomNumber(1, FEAUTURES_LIST.length);
-  // while (max < min) {
-  //   max += 1;
-  // }
-  return FEAUTURES_LIST.slice(min, max);
+const shuffle = (array) => array.toSorted(() => Math.random() - 0.5);
+
+const getRandomList = (array) => {
+  const shuffleList = shuffle(array);
+  return shuffleList.slice(0, getRandomNumber(1, shuffleList.length));
 };
 
-const getPhotosUrlList = () => {
-  const min = getRandomNumber(0, PHOTOS_URL_LIST.length - 1);
-  const max = getRandomNumber(1, PHOTOS_URL_LIST.length);
-  // while (max < min) {
-  //   max += 1;
-  // }
-  return PHOTOS_URL_LIST.slice(min, max);
-};
-
-const getLatCoordinates = () => getRandomNumber(LAT.MIN, LAT.MAX, LAT.SIGNS);
-const getLngCoordinates = () => getRandomNumber(LNG.MIN, LNG.MAX, LNG.SIGNS);
-
-export {getRandomNumber, getAvatarUrl, getFeauturesList, getPhotosUrlList, getLatCoordinates, getLngCoordinates};
+export {getRandomNumber, getAvatarUrl, getRandomList};
