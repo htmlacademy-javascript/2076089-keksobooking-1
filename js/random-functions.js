@@ -31,11 +31,7 @@ const AVATAR_URL_NUMBER = getUniqueNumber(1, 10);
 
 const getAvatarUrl = () => {
   const number = AVATAR_URL_NUMBER();
-
-  if (number < 10) {
-    return `img/avatars/user0${number}.png`;
-  }
-  return `img/avatars/user${number}.png`;
+  return `img/avatars/user${number.padStart(2, '0')}.png`;
 };
 
 const shuffle = (array) => array.toSorted(() => Math.random() - 0.5);
