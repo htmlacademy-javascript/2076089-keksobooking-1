@@ -6,7 +6,7 @@ const TITLES = [
   'Домище'
 ];
 
-const PRICE = {
+const PriceRange = {
   MIN: 1000,
   MAX: 30000
 };
@@ -19,12 +19,12 @@ const HOUSING_TYPES = [
   'hotel'
 ];
 
-const ROOMS_NUMBER = {
+const RoomsNumberRange = {
   MIN: 1,
   MAX: 12
 };
 
-const GUESTS_NUMBER = {
+const GuestsNumberRange = {
   MIN: 1,
   MAX: 20
 };
@@ -56,13 +56,13 @@ const PHOTOS_URL_LIST = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'
 ];
 
-const LAT = {
+const LatRange = {
   MIN: 35.65000,
   MAX: 35.70000,
   SIGNS: 5
 };
 
-const LNG = {
+const LngRange = {
   MIN: 139.70000,
   MAX: 139.80000,
   SIGNS: 5
@@ -70,4 +70,4 @@ const LNG = {
 
 const ADS_NUMBER = 10;
 
-export {TITLES, PRICE, HOUSING_TYPES, ROOMS_NUMBER, GUESTS_NUMBER, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LAT, LNG, ADS_NUMBER};
+export {TITLES, PriceRange, HOUSING_TYPES, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, ADS_NUMBER};

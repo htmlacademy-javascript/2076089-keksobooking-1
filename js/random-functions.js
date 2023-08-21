@@ -1,4 +1,3 @@
-
 const getRandomNumber = (minRange, maxRange, numOfSigns = 0) => {
   const isArgumentNotValid = typeof minRange !== 'number' || typeof maxRange !== 'number' || typeof numOfSigns !== 'number';
   if (isArgumentNotValid) {
@@ -27,10 +26,10 @@ const getUniqueNumber = (min, max, signs = 0) => {
   };
 };
 
-const AVATAR_URL_NUMBER = getUniqueNumber(1, 10);
+const getAvatarUrlNumber = getUniqueNumber(1, 10);
 
 const getAvatarUrl = () => {
-  const number = AVATAR_URL_NUMBER();
+  const number = getAvatarUrlNumber();
   return `img/avatars/user${number.padStart(2, '0')}.png`;
 };
 
