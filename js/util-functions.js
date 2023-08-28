@@ -26,6 +26,8 @@ const getUniqueNumber = (min, max, signs = 0) => {
   };
 };
 
+const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
+
 const getAvatarUrlNumber = getUniqueNumber(1, 10);
 
 const getAvatarUrl = () => {
@@ -40,4 +42,4 @@ const getRandomList = (array) => {
   return shuffleList.slice(0, getRandomNumber(1, shuffleList.length));
 };
 
-export {getRandomNumber, getAvatarUrl, getRandomList};
+export {getRandomNumber, getRandomArrayElement, getAvatarUrl, getRandomList};
