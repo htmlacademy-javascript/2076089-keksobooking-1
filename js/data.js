@@ -19,6 +19,14 @@ const HOUSING_TYPES = [
   'hotel'
 ];
 
+const HouseTypeTranslation = {
+  'palace': 'дворец',
+  'flat': 'квартира',
+  'house': 'дом',
+  'bungalow': 'бунгало',
+  'hotel': 'отель'
+};
+
 const RoomsNumberRange = {
   MIN: 1,
   MAX: 12
@@ -70,4 +78,4 @@ const LngRange = {
 
 const ADS_NUMBER = 10;
 
-export {TITLES, PriceRange, HOUSING_TYPES, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, ADS_NUMBER};
+export {TITLES, PriceRange, HOUSING_TYPES, HouseTypeTranslation, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, ADS_NUMBER};

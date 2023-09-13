@@ -20,7 +20,7 @@ const createAd = () => {
       guests: getRandomNumber(GuestsNumberRange.MIN, GuestsNumberRange.MAX),
       checkin: getRandomArrayElement(CHECK_TIME),
       checkout: getRandomArrayElement(CHECK_TIME),
-      feautures: getRandomList(FEAUTURES_LIST),
+      features: getRandomList(FEAUTURES_LIST),
       decription: getRandomArrayElement(DESCRIPTIONS),
       photos: getRandomList(PHOTOS_URL_LIST),
     },
