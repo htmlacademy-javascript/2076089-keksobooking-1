@@ -19,7 +19,7 @@ const HOUSING_TYPES = [
   'hotel'
 ];
 
-const HouseTypeTranslation = {
+const HOUSE_TYPE_TRANLATION = {
   'palace': 'дворец',
   'flat': 'квартира',
   'house': 'дом',
@@ -76,6 +76,11 @@ const LngRange = {
   SIGNS: 5
 };
 
+const nounDeclension = [
+  ['комната', 'комнаты', 'комнат'],
+  ['гостя', 'гостей', 'гостей']
+];
+
 const ADS_NUMBER = 10;
 
-export {TITLES, PriceRange, HOUSING_TYPES, HouseTypeTranslation, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, ADS_NUMBER};
+export {TITLES, PriceRange, HOUSING_TYPES, HOUSE_TYPE_TRANLATION, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, nounDeclension, ADS_NUMBER};

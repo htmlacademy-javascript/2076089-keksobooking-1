@@ -1,45 +1,73 @@
-import { HouseTypeTranslation } from './data.js';
+import { HOUSE_TYPE_TRANLATION, nounDeclension } from './data.js';
+import { getNoun } from './utils.js';
 
 const cardTemplate = document.querySelector('#card').content;
 
-const renderOfferFeatures = (offerList, templateClone) => {
+const renderOfferFeatures = (features, templateClone) => {
   const offerFeatures = templateClone.querySelector('.popup__features');
   offerFeatures.innerHTML = '';
-  offerList.features.forEach((element) => {
-    const item = document.createElement('li');
-    item.className = `popup__feature popup__feature--${element}`;
-    item.textContent = element;
-    offerFeatures.appendChild(item);
-  });
+  if (features) {
+    features.forEach((feature) => {
+      const item = document.createElement('li');
+      item.className = `popup__feature popup__feature--${feature}`;
+      item.textContent = feature;
+      offerFeatures.appendChild(item);
+    });
+  }
 };
 
-const renderOfferPhotos = (offerList, templateClone) => {
+const renderOfferPhotos = (photos, templateClone) => {
   const offerPhotos = templateClone.querySelector('.popup__photos');
   offerPhotos.innerHTML = '';
-  offerList.photos.forEach((element) => {
-    const photo = document.createElement('img');
-    photo.src = element;
-    photo.className = 'popup__photo';
-    photo.width = '45';
-    photo.height = '40';
-    photo.alt = 'Фотография жилья';
-    offerPhotos.appendChild(photo);
-  });
+  if (photos) {
+    photos.forEach((photo) => {
+      const item = cardTemplate.querySelector('.popup__photo').cloneNode();
+      item.src = photo;
+      offerPhotos.appendChild(item);
+    });
+  }
 };
 
-const createPopupElement = ({author, offer}) => {
+const createPopupContent = (selector, content, template, type = 'textElement') => {
+  const element = template.querySelector(selector);
+
+  if (content) {
+    if (type === 'image') {
+      element.src = content;
+    }
+    if (type === 'houseType') {
+      element.textContent = HOUSE_TYPE_TRANLATION[type];
+    }
+    element.textContent = content;
+  } else {
+    element.remove();
+  }
+};
+
+const createPopupElement = ({author: {avatar}, offer: {title, address, price, type, rooms, guests, checkin, checkout, description, features, photos}}) => {
   const offerCard = cardTemplate.cloneNode(true);
 
-  offerCard.querySelector('.popup__title').textContent = offer.title;
-  offerCard.querySelector('.popup__text--address').textContent = offer.address;
-  offerCard.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
-  offerCard.querySelector('.popup__type').textContent = HouseTypeTranslation[offer.type];
-  offerCard.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнат для ${offer.guests} гостей`;
-  offerCard.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
-  offerCard.querySelector('.popup__description').textContent = offer.description;
-  offerCard.querySelector('.popup__avatar').src = author.avatar;
-  renderOfferFeatures(offer, offerCard);
-  renderOfferPhotos(offer, offerCard);
+  const capacity = {
+    roomNumber: rooms,
+    guestNumber: guests,
+
+    getText () {
+      return `${this.roomNumber} ${getNoun(this.roomNumber, ...nounDeclension[0])} для ${this.guestNumber} ${getNoun(this.guestNumber, ...nounDeclension[1])}`;
+    }
+  };
+
+  createPopupContent('.popup__title', title, offerCard);
+  createPopupContent('.popup__text--address', address, offerCard);
+  createPopupContent('.popup__text--price', `${price} ₽/ночь`, offerCard);
+  createPopupContent('.popup__type', HOUSE_TYPE_TRANLATION[type], offerCard);
+  createPopupContent('.popup__text--capacity', capacity.getText(), offerCard);
+  createPopupContent('.popup__text--time', `Заезд после ${checkin}, выезд до ${checkout}`, offerCard);
+  createPopupContent('.popup__description', description, offerCard);
+  createPopupContent('.popup__type', type, offerCard, 'houseType');
+  createPopupContent('.popup__avatar', avatar, offerCard, 'image');
+
+  renderOfferFeatures(features, offerCard);
+  renderOfferPhotos(photos, offerCard);
 
   return offerCard;
 };
