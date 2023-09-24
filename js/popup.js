@@ -1,4 +1,4 @@
-import { HOUSE_TYPE_TRANLATION, nounDeclension } from './data.js';
+import { houseTypeTranslation, nounDeclension } from './data.js';
 import { getNoun } from './utils.js';
 
 const cardTemplate = document.querySelector('#card').content;
@@ -35,9 +35,6 @@ const createPopupContent = (selector, content, template, type = 'textElement') =
     if (type === 'image') {
       element.src = content;
     }
-    if (type === 'houseType') {
-      element.textContent = HOUSE_TYPE_TRANLATION[type];
-    }
     element.textContent = content;
   } else {
     element.remove();
@@ -52,18 +49,17 @@ const createPopupElement = ({author: {avatar}, offer: {title, address, price, ty
     guestNumber: guests,
 
     getText () {
-      return `${this.roomNumber} ${getNoun(this.roomNumber, ...nounDeclension[0])} для ${this.guestNumber} ${getNoun(this.guestNumber, ...nounDeclension[1])}`;
+      return `${this.roomNumber} ${getNoun(this.roomNumber, nounDeclension[0])} для ${this.guestNumber} ${getNoun(this.guestNumber, nounDeclension[1])}`;
     }
   };
 
   createPopupContent('.popup__title', title, offerCard);
   createPopupContent('.popup__text--address', address, offerCard);
   createPopupContent('.popup__text--price', `${price} ₽/ночь`, offerCard);
-  createPopupContent('.popup__type', HOUSE_TYPE_TRANLATION[type], offerCard);
+  createPopupContent('.popup__type', houseTypeTranslation[type], offerCard);
   createPopupContent('.popup__text--capacity', capacity.getText(), offerCard);
   createPopupContent('.popup__text--time', `Заезд после ${checkin}, выезд до ${checkout}`, offerCard);
   createPopupContent('.popup__description', description, offerCard);
-  createPopupContent('.popup__type', type, offerCard, 'houseType');
   createPopupContent('.popup__avatar', avatar, offerCard, 'image');
 
   renderOfferFeatures(features, offerCard);

@@ -42,20 +42,20 @@ const getRandomList = (array) => {
   return shuffleList.slice(0, getRandomNumber(1, shuffleList.length));
 };
 
-const getNoun = (number, one, two, five) => {
-  let n = Math.abs(number);
-  n %= 100;
-  if (n >= 5 && n <= 20) {
-    return five;
+const getNoun = (number, words) => {
+  const value = Math.abs(number) % 100;
+  const num = value % 10;
+  if (value > 10 && value < 20) {
+    return words[2];
   }
-  n %= 10;
-  if (n === 1) {
-    return one;
+  if(num > 1 && num < 5) {
+    return words[1];
+
   }
-  if (n >= 2 && n <= 4) {
-    return two;
+  if(num === 1) {
+    return words[0];
   }
-  return five;
+  return words[2];
 };
 
 export {getRandomNumber, getRandomArrayElement, getAvatarUrl, getRandomList, getNoun};
