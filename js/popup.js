@@ -31,13 +31,14 @@ const renderOfferPhotos = (photos, templateClone) => {
 const createPopupContent = (selector, content, template, type = 'textElement') => {
   const element = template.querySelector(selector);
 
-  if (content) {
-    if (type === 'image') {
-      element.src = content;
-    }
-    element.textContent = content;
-  } else {
+  if (!content) {
     element.remove();
+    return;
+  }
+  if (type === 'image') {
+    element.src = content;
+  } else {
+    element.textContent = content;
   }
 };
 

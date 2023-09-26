@@ -1,6 +1,7 @@
 import { createAd } from './ad.js';
 import { ADS_NUMBER } from './data.js';
 import { createPopupElement } from './popup.js';
+import { initForm } from './form.js';
 
 const mapBlock = document.querySelector('#map-canvas');
 
@@ -15,3 +16,4 @@ const createPopups = (arrayList) => {
 
 const ads = Array.from({length: ADS_NUMBER}, createAd);
 createPopups(ads);
+initForm();
