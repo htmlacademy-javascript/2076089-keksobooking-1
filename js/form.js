@@ -3,20 +3,18 @@ const mapFilters = document.querySelector('.map__filters');
 const formElements = adForm.querySelectorAll('fieldset');
 const filterElements = mapFilters.children;
 
-const deactivateForm = (formItem) => {
-  formItem.setAttribute('disabled', 'disabled');
-};
-const activateForm = (formItem) => {
-  formItem.removeAttribute('disabled');
-};
-
-const toggleStatus = (callback) => {
+const toggleStatus = (status) => {
   adForm.classList.toggle('ad-form--disabled');
   mapFilters.classList.toggle('ad-form--disabled');
 
-  formElements.forEach((element) => callback(element));
-  Array.from(filterElements).forEach((element) => callback(element));
+  if (status) {
+    formElements.forEach((element) => element.removeAttribute('disabled'));
+    Array.from(filterElements).forEach((element) => element.removeAttribute('disabled'));
+  } else {
+    formElements.forEach((element) => element.setAttribute('disabled', 'disabled'));
+    Array.from(filterElements).forEach((element) => element.setAttribute('disabled', 'disabled'));
+  }
 };
 
 
-export {toggleStatus, deactivateForm, activateForm};
+export {toggleStatus};

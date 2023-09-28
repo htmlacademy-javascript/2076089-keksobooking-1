@@ -1,7 +1,7 @@
 import { createAd } from './ad.js';
-import { ADS_NUMBER } from './data.js';
+import { FormStatus, ADS_NUMBER } from './data.js';
 import { createPopupElement } from './popup.js';
-import { toggleStatus, deactivateForm } from './form.js';
+import { toggleStatus } from './form.js';
 
 const mapBlock = document.querySelector('#map-canvas');
 
@@ -16,4 +16,4 @@ const createPopups = (arrayList) => {
 
 const ads = Array.from({length: ADS_NUMBER}, createAd);
 createPopups(ads);
-toggleStatus(deactivateForm);
+toggleStatus(FormStatus.deactive);
