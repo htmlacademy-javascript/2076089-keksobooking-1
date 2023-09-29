@@ -81,6 +81,11 @@ const nounDeclension = [
   ['гостя', 'гостей', 'гостей']
 ];
 
+const FormStatus = {
+  active: true,
+  deactive: false
+};
+
 const ADS_NUMBER = 10;
 
-export {TITLES, PriceRange, HOUSING_TYPES, houseTypeTranslation, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, nounDeclension, ADS_NUMBER};
+export {TITLES, PriceRange, HOUSING_TYPES, houseTypeTranslation, RoomsNumberRange, GuestsNumberRange, CHECK_TIME, FEAUTURES_LIST, DESCRIPTIONS, PHOTOS_URL_LIST, LatRange, LngRange, nounDeclension, FormStatus, ADS_NUMBER};
